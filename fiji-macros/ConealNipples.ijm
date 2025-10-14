@@ -1,0 +1,15 @@
+run("Remove Outliers...", "radius=20 threshold=20 which=Bright");
+run("Gaussian Blur...", "sigma=7");
+run("Maximum...", "radius=8");
+run("Unsharp Mask...", "radius=4 mask=0.90");
+run("Remove Outliers...", "radius=50 threshold=5 which=Bright");
+run("Minimum...", "radius=3.5");
+run("Top Hat...", "radius=200 light");
+setThreshold(233, 255);
+setOption("BlackBackground", true);
+run("Convert to Mask");
+//run("Invert");
+run("Watershed");
+run("Erode");
+roiManager("Deselect");
+run("Analyze Particles...", "size=700-Infinity pixel circularity=0.60-1.00 display exclude clear include add composite");
